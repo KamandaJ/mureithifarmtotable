@@ -1,5 +1,6 @@
 import { Mail, Phone, MapPin, Facebook, Instagram, Twitter } from "lucide-react";
 import logoImg from "@assets/generated_images/logo_for_organic_farm_mureithi's_farm_to_table.png";
+import { Link } from "wouter";
 
 export default function ContactFooter() {
   return (
@@ -50,28 +51,26 @@ export default function ContactFooter() {
           <div>
             <h4 className="font-heading font-bold text-xl mb-6 text-accent">Quick Links</h4>
             <ul className="space-y-3">
-              <li><a href="#" className="hover:text-accent transition-colors">Home</a></li>
-              <li><a href="#products" className="hover:text-accent transition-colors">Our Produce</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Contact</a></li>
+              <li><Link href="/" className="hover:text-accent transition-colors">Home</Link></li>
+              <li><Link href="/products" className="hover:text-accent transition-colors">Our Produce</Link></li>
+              <li><Link href="/about" className="hover:text-accent transition-colors">About Us</Link></li>
+              <li><Link href="/contact" className="hover:text-accent transition-colors">Contact</Link></li>
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-heading font-bold text-xl mb-6 text-accent">Newsletter</h4>
-            <p className="text-sm text-primary-foreground/70 mb-4">
-              Subscribe to get updates on harvest days and new produce.
+          <div className="bg-white/5 p-6 rounded-2xl border border-white/10">
+            <h4 className="font-heading font-bold text-xl mb-4 text-white">Need Help?</h4>
+            <p className="text-sm text-primary-foreground/70 mb-6">
+              Have questions about our produce or delivery? We're here to help you get the best organic vegetables.
             </p>
-            <div className="flex gap-2">
-              <input 
-                type="email" 
-                placeholder="Your email" 
-                className="bg-white/10 border border-white/20 rounded-lg px-4 py-2 w-full focus:outline-none focus:border-accent text-white placeholder:text-white/50"
-              />
-              <button className="bg-accent hover:bg-accent/90 text-white px-4 py-2 rounded-lg font-medium transition-colors">
-                Join
-              </button>
-            </div>
+            <a 
+               href="https://wa.me/254712700008" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               className="inline-flex items-center justify-center w-full px-4 py-3 bg-accent hover:bg-accent/90 text-white font-bold rounded-lg transition-colors"
+            >
+              Chat on WhatsApp
+            </a>
           </div>
         </div>
 
