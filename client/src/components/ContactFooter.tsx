@@ -3,6 +3,9 @@ import logoImg from "@assets/generated_images/logo_for_organic_farm_mureithi's_f
 import { Link } from "wouter";
 
 export default function ContactFooter() {
+  const helpMessage = "Hello Mureithi's Farm, I am interested in your produce and have a question.";
+  const helpLink = `https://wa.me/254712700008?text=${encodeURIComponent(helpMessage)}`;
+
   return (
     <footer className="bg-primary text-white pt-20 pb-10">
       <div className="container mx-auto px-4">
@@ -64,7 +67,7 @@ export default function ContactFooter() {
               Have questions about our produce or delivery? We're here to help you get the best organic vegetables.
             </p>
             <a 
-               href="https://wa.me/254712700008" 
+               href={helpLink} 
                target="_blank" 
                rel="noopener noreferrer"
                className="inline-flex items-center justify-center w-full px-4 py-3 bg-accent hover:bg-accent/90 text-white font-bold rounded-lg transition-colors"

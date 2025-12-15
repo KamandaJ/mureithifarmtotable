@@ -1,19 +1,19 @@
 import { Link, useLocation } from "wouter";
-import { Phone, ShoppingBasket, Menu, X } from "lucide-react";
+import { Phone, Menu, X, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import logoImg from "@assets/generated_images/logo_for_organic_farm_mureithi's_farm_to_table.png";
 import { cn } from "@/lib/utils";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [location] = useLocation();
-
-  const links = [
-    { href: "/", label: "Home" },
-    { href: "/products", label: "Our Produce" },
-    { href: "/about", label: "About Us" },
-    { href: "/contact", label: "Contact" },
-  ];
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-border shadow-sm">
@@ -35,23 +35,37 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
-          <div className="flex gap-6">
-            {links.map((link) => (
-              <Link 
-                key={link.href} 
-                href={link.href}
-                className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary relative py-1",
-                  location === link.href 
-                    ? "text-primary font-bold after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:rounded-full" 
-                    : "text-muted-foreground"
-                )}
-              >
-                {link.label}
+        <div className="hidden md:flex items-center gap-6">
+          <Link href="/products">
+            <Button 
+              variant="ghost" 
+              className={cn(
+                "text-base font-medium",
+                location === "/products" ? "text-primary font-bold bg-primary/10" : "text-muted-foreground"
+              )}
+            >
+              Our Produce
+            </Button>
+          </Link>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="text-base font-medium text-muted-foreground gap-1">
+                Explore <ChevronDown className="w-4 h-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48 bg-white">
+              <Link href="/">
+                <DropdownMenuItem className="cursor-pointer">Home</DropdownMenuItem>
               </Link>
-            ))}
-          </div>
+              <Link href="/about">
+                <DropdownMenuItem className="cursor-pointer">About Us</DropdownMenuItem>
+              </Link>
+              <Link href="/contact">
+                <DropdownMenuItem className="cursor-pointer">Contact</DropdownMenuItem>
+              </Link>
+            </DropdownMenuContent>
+          </DropdownMenu>
           
           <a 
             href="https://wa.me/254712700008" 
@@ -76,21 +90,46 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden absolute top-20 left-0 w-full bg-background border-b border-border shadow-lg p-4 flex flex-col gap-4 animate-in slide-in-from-top-2">
-          {links.map((link) => (
-            <Link 
-              key={link.href} 
-              href={link.href}
-              className={cn(
-                "px-4 py-3 rounded-lg transition-colors text-lg font-medium",
-                location === link.href 
-                  ? "bg-primary/10 text-primary" 
-                  : "hover:bg-muted text-foreground"
-              )}
-              onClick={() => setIsOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
+          <Link 
+            href="/"
+            className={cn(
+              "px-4 py-3 rounded-lg transition-colors text-lg font-medium",
+              location === "/" ? "bg-primary/10 text-primary" : "hover:bg-muted text-foreground"
+            )}
+            onClick={() => setIsOpen(false)}
+          >
+            Home
+          </Link>
+          <Link 
+            href="/products"
+            className={cn(
+              "px-4 py-3 rounded-lg transition-colors text-lg font-medium",
+              location === "/products" ? "bg-primary/10 text-primary" : "hover:bg-muted text-foreground"
+            )}
+            onClick={() => setIsOpen(false)}
+          >
+            Our Produce
+          </Link>
+          <Link 
+            href="/about"
+            className={cn(
+              "px-4 py-3 rounded-lg transition-colors text-lg font-medium",
+              location === "/about" ? "bg-primary/10 text-primary" : "hover:bg-muted text-foreground"
+            )}
+            onClick={() => setIsOpen(false)}
+          >
+            About Us
+          </Link>
+          <Link 
+            href="/contact"
+            className={cn(
+              "px-4 py-3 rounded-lg transition-colors text-lg font-medium",
+              location === "/contact" ? "bg-primary/10 text-primary" : "hover:bg-muted text-foreground"
+            )}
+            onClick={() => setIsOpen(false)}
+          >
+            Contact
+          </Link>
           <a 
             href="https://wa.me/254712700008" 
             target="_blank" 

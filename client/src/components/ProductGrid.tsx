@@ -69,6 +69,18 @@ export default function ProductGrid() {
     return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
   };
 
+  // Group products by category
+  const productsByCategory = products.reduce((acc, product) => {
+    if (!acc[product.category]) {
+      acc[product.category] = [];
+    }
+    acc[product.category].push(product);
+    return acc;
+  }, {} as Record<string, Product[]>);
+
+  // Define category order
+  const categoryOrder = ["Leafy Green", "Vegetable", "Spice"];
+
   return (
     <section id="products" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -82,15 +94,33 @@ export default function ProductGrid() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-          {products.map((product) => (
-            <ProductCard 
-              key={product.id} 
-              product={product} 
-              onAddToOrder={addToCart}
-              isAdded={cart.has(product.id)}
-            />
-          ))}
+        <div className="space-y-16">
+          {categoryOrder.map((category) => {
+            const categoryProducts = productsByCategory[category];
+            if (!categoryProducts || categoryProducts.length === 0) return null;
+
+            return (
+              <div key={category} className="space-y-8">
+                <div className="flex items-center gap-4">
+                  <h3 className="text-2xl md:text-3xl font-heading font-bold text-primary">
+                    {category}s
+                  </h3>
+                  <div className="h-px bg-border flex-1"></div>
+                </div>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+                  {categoryProducts.map((product) => (
+                    <ProductCard 
+                      key={product.id} 
+                      product={product} 
+                      onAddToOrder={addToCart}
+                      isAdded={cart.has(product.id)}
+                    />
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
 
