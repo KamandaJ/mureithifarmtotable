@@ -1,7 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { Phone, Menu, X, ChevronDown } from "lucide-react";
 import { useState } from "react";
-import logoImg from "@assets/generated_images/logo_for_organic_farm_mureithi's_farm_to_table.png";
+import logoImg from "@assets/generated_images/modern_logo_for_mureithi's_farm_to_table.png";
 import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
@@ -22,7 +22,7 @@ export default function Navbar() {
           <img 
             src={logoImg} 
             alt="Mureithi's Farm To Table" 
-            className="h-12 w-12 object-contain rounded-full border border-primary/10" 
+            className="h-14 w-14 object-contain rounded-full shadow-sm" 
           />
           <div className="flex flex-col">
             <span className="font-heading font-bold text-xl md:text-2xl text-primary leading-none tracking-tight">

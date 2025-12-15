@@ -1,5 +1,5 @@
 import { Mail, Phone, MapPin, Facebook, Instagram, Twitter } from "lucide-react";
-import logoImg from "@assets/generated_images/logo_for_organic_farm_mureithi's_farm_to_table.png";
+import logoImg from "@assets/generated_images/modern_logo_for_mureithi's_farm_to_table.png";
 import { Link } from "wouter";
 
 export default function ContactFooter() {
@@ -12,8 +12,8 @@ export default function ContactFooter() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center overflow-hidden">
-                <img src={logoImg} alt="Logo" className="w-10 h-10 object-contain" />
+              <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center overflow-hidden">
+                <img src={logoImg} alt="Logo" className="w-12 h-12 object-contain" />
               </div>
               <h3 className="font-heading font-bold text-2xl">Mureithi's Farm</h3>
             </div>

@@ -1,6 +1,6 @@
 import { ArrowRight, Leaf, Sun, Sprout, Heart } from "lucide-react";
 import { Link } from "wouter";
-import heroImg from "@assets/generated_images/hero_image_with_all_vegetables_together.png";
+import heroImg from "@assets/generated_images/hero_image_with_greens,_vegetables,_and_spices.png";
 
 export default function Hero() {
   return (
