@@ -24,6 +24,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product, onAddToOrder, isAdded = false, quantity = 0, onUpdateQuantity, onRemoveFromCart }: ProductCardProps) {
   const [justAdded, setJustAdded] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -38,10 +39,18 @@ export default function ProductCard({ product, onAddToOrder, isAdded = false, qu
         <DialogTrigger asChild>
           <div className="cursor-pointer flex flex-col h-full">
             <div className="relative aspect-square overflow-hidden bg-muted">
+              {!imageLoaded && (
+                <div className="absolute inset-0 bg-gradient-to-br from-muted to-muted/50 animate-pulse" />
+              )}
               <img 
                 src={product.image} 
-                alt={product.name} 
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                alt={product.name}
+                loading="lazy"
+                onLoad={() => setImageLoaded(true)}
+                className={cn(
+                  "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110",
+                  !imageLoaded ? "opacity-0" : "opacity-100"
+                )}
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
                 <span className="text-white font-medium text-sm bg-black/50 px-2 py-1 rounded backdrop-blur-sm">
