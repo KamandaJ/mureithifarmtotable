@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
-import { Mail, Phone, MapPin, Clock, MessageCircle } from "lucide-react";
+import { Phone, MapPin, Clock, MessageCircle } from "lucide-react";
 
 export default function ContactPage() {
   return (
@@ -35,18 +35,7 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                      <Mail className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-lg mb-1">Email Us</h4>
-                      <p className="text-muted-foreground mb-2">We'll get back to you soon</p>
-                      <a href="mailto:johnmureithi331@gmail.com" className="text-primary font-medium hover:underline break-all">
-                        johnmureithi331@gmail.com
-                      </a>
-                    </div>
-                  </div>
+
 
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">

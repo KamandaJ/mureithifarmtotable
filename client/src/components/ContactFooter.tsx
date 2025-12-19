@@ -1,5 +1,5 @@
-import { Mail, Phone, MapPin, Facebook, Instagram, Twitter } from "lucide-react";
-import logoImg from "@assets/generated_images/modern_logo_for_mureithi's_farm_to_table.png";
+import { Phone, MapPin, MessageCircle } from "lucide-react";
+import logoImg from "@assets/generated_images/enhanced_Farm_To_Table_logo.png";
 import { Link } from "wouter";
 
 export default function ContactFooter() {
@@ -15,11 +15,14 @@ export default function ContactFooter() {
               <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center overflow-hidden">
                 <img src={logoImg} alt="Logo" className="w-12 h-12 object-contain" />
               </div>
-              <h3 className="font-heading font-bold text-2xl">Mureithi's Farm</h3>
+              <div>
+                <h3 className="font-heading font-bold text-2xl">Mureithi's Farm</h3>
+                <span className="text-sm text-primary-foreground/80">To Table</span>
+              </div>
             </div>
             <p className="text-primary-foreground/80 leading-relaxed">
               Dedicated to bringing you the freshest, organically grown vegetables. 
-              We believe in sustainable farming and healthy communities.
+              We believe in sustainable farming and healthy families.
             </p>
           </div>
 
@@ -35,18 +38,19 @@ export default function ContactFooter() {
                 </a>
               </li>
               <li>
-                <a href="mailto:johnmureithi331@gmail.com" className="flex items-center gap-3 hover:text-accent transition-colors group">
-                  <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-colors">
-                    <Mail className="w-5 h-5" />
+                <a href={helpLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-[#25D366] transition-colors group">
+                  <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#25D366] group-hover:text-white transition-colors">
+                    <MessageCircle className="w-5 h-5" />
                   </span>
-                  johnmureithi331@gmail.com
+                  Message on WhatsApp
                 </a>
               </li>
+
               <li className="flex items-center gap-3">
                 <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
                   <MapPin className="w-5 h-5" />
                 </span>
-                Local Farm, Kenya
+                Thome, Nairobi, Kenya
               </li>
             </ul>
           </div>
@@ -78,14 +82,7 @@ export default function ContactFooter() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-primary-foreground/60">
-            © 2024 Mureithi's Farm To Table. All rights reserved.
-          </p>
-          <div className="flex gap-4">
-            <a href="#" className="text-white/60 hover:text-white transition-colors"><Facebook className="w-5 h-5" /></a>
-            <a href="#" className="text-white/60 hover:text-white transition-colors"><Instagram className="w-5 h-5" /></a>
-            <a href="#" className="text-white/60 hover:text-white transition-colors"><Twitter className="w-5 h-5" /></a>
-          </div>
+            © 2025 Mureithi's Farm To Table. All rights reserved.
         </div>
       </div>
     </footer>

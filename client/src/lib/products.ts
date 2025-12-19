@@ -1,11 +1,14 @@
-import terereImg from "@assets/generated_images/fresh_amaranth/terere_leaves.png";
-import managuImg from "@assets/generated_images/fresh_black_nightshade/managu_leaves.png";
-import kundeImg from "@assets/generated_images/fresh_cowpeas/kunde_leaves.png";
-import comfreyImg from "@assets/generated_images/fresh_comfrey_leaves.png";
+import terereImg from "@assets/generated_images/fresh_amaranth_terere_leaves.png";
+import managuImg from "@assets/generated_images/managu_plant_leaves.png";
+import kundeImg from "@assets/generated_images/cowpeas_leaves.png";
+import comfreyImg from "@assets/generated_images/Comfrey_leaves.png";
 import tomatoImg from "@assets/generated_images/fresh_red_tomatoes.png";
 import cabbageImg from "@assets/generated_images/fresh_green_cabbage.png";
-import butternutImg from "@assets/generated_images/fresh_butternut_squash.png";
-import pumpkinImg from "@assets/generated_images/fresh_pumpkin.png";
+import butternutImg from "@assets/generated_images/butternut_squash.png";
+import sukumawikiImg from "@assets/generated_images/Sukuma_wiki_plant.png";
+import cayenneImg from "@assets/generated_images/cayenne_chillies.png";
+import habaneroImg from "@assets/generated_images/habanero_peppers.png";
+import jalapenoImg from "@assets/generated_images/Jalapeno_peppers.png";
 
 export interface Product {
   id: string;
@@ -73,7 +76,7 @@ export const products: Product[] = [
     name: "Comfrey",
     category: "Leafy Green",
     priceUnit: "bunch",
-    price: 100,
+    price: 50,
     image: comfreyImg,
     nutritionalBenefits: [
       "Contains Allantoin (promotes cell growth)",
@@ -133,36 +136,20 @@ export const products: Product[] = [
     preparation: "Peel, seed, and cube. Roast with cinnamon or herbs, boil and mash, or blend into a creamy soup.",
   },
   {
-    id: "pumpkin",
-    name: "Pumpkin",
-    category: "Vegetable",
-    priceUnit: "piece",
-    price: 200,
-    image: pumpkinImg,
+    id: "sukuma wiki",
+    name: "Sukuma Wiki",
+    category: "Leafy Green",
+    priceUnit: "bunch",
+    price: 50,
+    image: sukumawikiImg,
     nutritionalBenefits: [
-      "Rich in Vitamin A",
-      "High in Antioxidants",
-      "Contains Vitamin C",
-      "Good for eye health"
+      "Rich in Vitamins A, C, and K",
+      "High in Fiber",
+      "Contains Calcium",
+      "Good for bone health"
     ],
-    funFact: "Every single part of a pumpkin is edible, including the skin, leaves, flowers, and stem!",
-    preparation: "Roast wedges with skin on, or boil and mash for chapati. Seeds can be roasted for a healthy snack.",
-  },
-  {
-    id: "onion",
-    name: "Bunching Onion",
-    category: "Vegetable",
-    priceUnit: "piece",
-    price: 10,
-    image: comfreyImg, // Fallback
-    nutritionalBenefits: [
-      "Rich in Vitamin K",
-      "Contains Vitamin C",
-      "Has antiviral properties",
-      "Good for heart health"
-    ],
-    funFact: "Bunching onions are also known as scallions or green onions and are harvested before the bulb swells.",
-    preparation: "Chop both the white and green parts. Use as a base flavor for frying or garnish soups and salads for a fresh crunch.",
+    funFact: "Sukuma Wiki means 'to push the week' in Swahili, as it is an affordable vegetable that helps stretch meals.",
+    preparation: "Wash and chop. Sauté with onions, tomatoes, and a bit of oil. Can also be added to stews or soups for extra nutrition.",
   },
   {
     id: "cayenne",
@@ -170,7 +157,7 @@ export const products: Product[] = [
     category: "Spice",
     priceUnit: "piece",
     price: 5,
-    image: tomatoImg, // Fallback
+    image: cayenneImg,
     nutritionalBenefits: [
       "Contains Capsaicin (pain relief)",
       "Boosts metabolism",
@@ -180,4 +167,36 @@ export const products: Product[] = [
     funFact: "Cayenne peppers have been used for both food and medicine for the last 9,000 years!",
     preparation: "Wash and chop finely. Add to stews or marinades for heat. Use sparingly—it packs a punch!",
   },
+  {
+    id: "habanero",
+    name: "Habanero",
+    category: "Spice",
+    priceUnit: "piece",
+    price: 10,
+    image: habaneroImg,
+    nutritionalBenefits: [
+      "Extremely high in Vitamin C",
+      "Contains Capsaicin (anti-inflammatory)",
+      "Boosts metabolism",
+      "Rich in antioxidants"
+    ],
+    funFact: "Habanero peppers are among the hottest chili peppers in the world, measuring between 100,000 to 350,000 on the Scoville scale!",
+    preparation: "Handle with care—wear gloves if necessary. Finely chop and add to sauces or salsas for intense heat. Use sparingly to avoid overpowering dishes.",
+  },
+  {
+    id: "jalapeno",
+    name: "Jalapeno",
+    category: "Spice",
+    priceUnit: "piece",
+    price: 8,
+    image: jalapenoImg,
+    nutritionalBenefits: [
+      "High in Vitamin C",
+      "Contains Capsaicin (pain relief)",
+      "Boosts metabolism",
+      "Aids digestion"
+    ],
+    funFact: "Jalapeno peppers are named after the city of Xalapa in Veracruz, Mexico, where they were traditionally cultivated.",
+    preparation: "Wash and slice. Can be eaten raw in salads or pickled. Also great for stuffing or adding to salsas for a moderate heat level.",
+  }
 ];

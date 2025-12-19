@@ -1,7 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { Phone, Menu, X, ChevronDown } from "lucide-react";
 import { useState } from "react";
-import logoImg from "@assets/generated_images/modern_logo_for_mureithi's_farm_to_table.png";
+import logoImg from "@assets/generated_images/enhanced_Farm_To_Table_logo.png";
 import { cn } from "@/lib/utils";
 import {
   DropdownMenu,

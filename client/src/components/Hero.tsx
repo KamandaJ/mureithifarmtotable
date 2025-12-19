@@ -12,7 +12,7 @@ export default function Hero() {
           alt="Fresh organic vegetables harvest including amaranth, managu, and more" 
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20 md:to-transparent"></div>
+        <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/50 to-black/20 md:to-transparent"></div>
       </div>
 
       <div className="relative z-10 container mx-auto px-4 py-24 md:py-32 lg:py-40 flex flex-col justify-center h-full">
@@ -22,13 +22,15 @@ export default function Hero() {
             <span>100% Organic & Local Kenyan Produce</span>
           </div>
           
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold leading-tight drop-shadow-lg">
-            Nourishing Communities,<br />
-            <span className="text-green-400">One Harvest at a Time</span>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-semibold leading-tight drop-shadow-lg">
+            Simply fresh, simply local<br />
+            <span className="text-green-400 font-light">From our farm to your table</span>
           </h1>
           
           <p className="text-lg md:text-xl text-gray-100 max-w-xl leading-relaxed drop-shadow-md font-medium">
-            From our nutrient-rich soil directly to your kitchen. We specialize in indigenous greens like Terere and Managu, alongside fresh daily vegetables.
+            Experience the authentic taste of traditional African vegetables, 
+            grown with care using sustainable farming practices.<br />
+            From our family farm to your table.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 pt-4">

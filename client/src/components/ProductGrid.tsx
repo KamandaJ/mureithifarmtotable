@@ -1,6 +1,6 @@
 import { products, Product } from "@/lib/products";
 import ProductCard from "./ProductCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ShoppingBag, MessageCircle, X, Trash2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -15,7 +15,19 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function ProductGrid() {
-  const [cart, setCart] = useState<Map<string, { product: Product, quantity: number }>>(new Map());
+  const [cart, setCart] = useState<Map<string, { product: Product, quantity: number }>>(() => {
+    try {
+      if (typeof window === "undefined") return new Map();
+      const raw = localStorage.getItem("cart");
+      if (!raw) return new Map();
+      const parsed = JSON.parse(raw) as Array<{ product: Product; quantity: number }>;
+      const m = new Map<string, { product: Product; quantity: number }>();
+      parsed.forEach((item) => m.set(item.product.id, { product: item.product, quantity: item.quantity }));
+      return m;
+    } catch {
+      return new Map();
+    }
+  });
 
   const addToCart = (product: Product) => {
     setCart(prev => {
@@ -38,6 +50,15 @@ export default function ProductGrid() {
     });
   };
 
+  const clearCart = () => {
+    setCart(new Map());
+    try {
+      localStorage.removeItem("cart");
+    } catch (e) {
+      // ignore
+    }
+  };
+
   const updateQuantity = (productId: string, delta: number) => {
     setCart(prev => {
       const newCart = new Map(prev);
@@ -57,6 +78,16 @@ export default function ProductGrid() {
   const cartItems = Array.from(cart.values());
   const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
   const totalPrice = cartItems.reduce((acc, item) => acc + (item.product.price * item.quantity), 0);
+
+  // persist cart to localStorage whenever it changes
+  useEffect(() => {
+    try {
+      const arr = Array.from(cart.values()).map((it) => ({ product: it.product, quantity: it.quantity }));
+      localStorage.setItem("cart", JSON.stringify(arr));
+    } catch (e) {
+      // ignore serialization errors
+    }
+  }, [cart]);
 
   const generateWhatsAppLink = () => {
     const phone = "254712700008";
@@ -115,6 +146,9 @@ export default function ProductGrid() {
                       product={product} 
                       onAddToOrder={addToCart}
                       isAdded={cart.has(product.id)}
+                      quantity={cart.get(product.id)?.quantity ?? 0}
+                      onUpdateQuantity={updateQuantity}
+                      onRemoveFromCart={removeFromCart}
                     />
                   ))}
                 </div>
@@ -213,17 +247,24 @@ export default function ProductGrid() {
                     <span>Total Estimate:</span>
                     <span className="text-primary">Ksh {totalPrice}</span>
                   </div>
-                  <a 
-                    href={generateWhatsAppLink()} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="w-full"
-                  >
-                    <Button className="w-full h-12 text-lg bg-[#25D366] hover:bg-[#128C7E] text-white gap-2 rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-                      <MessageCircle className="w-5 h-5" />
-                      Send Order via WhatsApp
+
+                  <div className="flex gap-3 w-full">
+                    <Button onClick={clearCart} variant="destructive" className="flex-1 h-12 text-lg rounded-xl">
+                      Clear Cart
                     </Button>
-                  </a>
+
+                    <a 
+                      href={generateWhatsAppLink()} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex-1"
+                    >
+                      <Button className="w-full h-12 text-lg bg-[#25D366] hover:bg-[#128C7E] text-white gap-2 rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                        <MessageCircle className="w-5 h-5" />
+                        Send Order via WhatsApp
+                      </Button>
+                    </a>
+                  </div>
                 </SheetFooter>
               </SheetContent>
             </Sheet>
