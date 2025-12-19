@@ -9,6 +9,7 @@ import sukumawikiImg from "@assets/generated_images/Sukuma_wiki_plant.png";
 import cayenneImg from "@assets/generated_images/cayenne_chillies.png";
 import habaneroImg from "@assets/generated_images/habanero_peppers.png";
 import jalapenoImg from "@assets/generated_images/Jalapeno_peppers.png";
+import pumpkinImg from "@assets/generated_images/fresh_pumpkin.png";
 
 export interface Product {
   id: string;
@@ -134,6 +135,22 @@ export const products: Product[] = [
     ],
     funFact: "The darker the orange color of the flesh, the higher the concentration of beta-carotene and nutrients.",
     preparation: "Peel, seed, and cube. Roast with cinnamon or herbs, boil and mash, or blend into a creamy soup.",
+  },
+  {
+    id: "pumpkin",
+    name: "Pumpkin",
+    category: "Vegetable",
+    priceUnit: "piece",
+    price: 120,
+    image: pumpkinImg,
+    nutritionalBenefits: [
+      "Rich in Vitamin A and C",
+      "High in Fiber",
+      "Contains Potassium",
+      "Good for eye health"
+    ],
+    funFact: "Pumpkins are technically a fruit, as they contain seeds, but are commonly used as a vegetable in cooking.",
+    preparation: "Cut open and scoop out seeds. Peel and cube the flesh for roasting, mashing, or adding to soups and stews.",
   },
   {
     id: "sukuma wiki",
